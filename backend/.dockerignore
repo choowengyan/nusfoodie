@@ -1,0 +1,55 @@
+# Created by https://www.toptal.com/developers/gitignore/api/django,react,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=django,react,
+### User added gitignore ###
+env
+venv
+
+# django generated static files
+# **/**/django_static/**
+# !**/**/django_static/img
+
+# etl images
+**/**/etl
+
+**/nohup.out
+**/models.dot
+**/models.png
+
+*university_logos
+.vscode/
+notes/
+
+### Django ###
+**/**/**/*.log
+**/*.pot
+**/*.pyc
+__pycache__
+**/*.sqlite3
+**/*.sqlite3-journal
+
+### Django.Python Stack ###
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
