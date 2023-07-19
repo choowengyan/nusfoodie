@@ -7,6 +7,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import Establishments from './containers/Establishments/Establishments';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Cuisines from './containers/Cuisines/Cuisines';
+import Home from './containers/Home/Home';
 
 const theme = createTheme({
   typography: {
@@ -38,6 +39,7 @@ function App() {
         <Router>
           {/* <Navbar /> */}
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/establishments" element={<Establishments />} />
             <Route path="/cuisines" element={<Cuisines />} />
             {/* <Route path="/login" component={Login} />
