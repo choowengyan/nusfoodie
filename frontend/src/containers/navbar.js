@@ -202,24 +202,24 @@ const ResponsiveAppBar = (props) => {
     };
 
 
-    React.useEffect(() => {
-        fetchMe();
-    }, [])
+    // React.useEffect(() => {
+    //     fetchMe();
+    // }, [])
 
-    const fetchMe = () => {
-        axios.get(`https://dev.silvi.io/api/me`,
-            { withCredentials: true })
-            .then(response => {
-                console.log(response.data)
-                console.log(response.data.profile.profile_picture)
-                setProfilePic(response.data.profile.profile_picture)
-                console.log(profilePic)
-                return response.data
-            })
-            .catch(error => {
-                console.error('Error', error);
-            });
-    }
+    // const fetchMe = () => {
+    //     axios.get(`https://dev.silvi.io/api/me`,
+    //         { withCredentials: true })
+    //         .then(response => {
+    //             console.log(response.data)
+    //             console.log(response.data.profile.profile_picture)
+    //             setProfilePic(response.data.profile.profile_picture)
+    //             console.log(profilePic)
+    //             return response.data
+    //         })
+    //         .catch(error => {
+    //             console.error('Error', error);
+    //         });
+    // }
 
     const useStyles = makeStyles((theme) => ({
         navlinks: {
@@ -261,7 +261,7 @@ const ResponsiveAppBar = (props) => {
     };
 
     return (
-        <AppBar style={{ background: 'white' }}>
+        <AppBar style={{ background: '#FFC95F', boxShadow: 'none' }}>
             <Container maxWidth="md">
                 <Toolbar disableGutters className={classes.customHeight}>
                     <Box style={{ width: "20%" }} sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, pt: 0 }}>
@@ -300,7 +300,7 @@ const ResponsiveAppBar = (props) => {
                             }}
                         >
 
-                            <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/canteens">
+                            <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/establishments">
                                 <Typography textAlign="center">Canteens</Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/cuisines">
@@ -337,7 +337,7 @@ const ResponsiveAppBar = (props) => {
                             Canteen
                         </Button>
                         <Button onClick={handleCloseNavMenu} component={Link} to="/foodItems" sx={{ my: 1, color: 'black', display: 'block', fontSize: "10px" }}>
-                            Cuisines
+                            Cuisine
                         </Button>
                         <Button onClick={handleCloseNavMenu} component={Link} to="/food-review" sx={{ my: 1, color: 'black', display: 'block', fontSize: "10px" }}>
                             Food Review

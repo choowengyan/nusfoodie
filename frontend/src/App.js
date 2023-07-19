@@ -3,12 +3,22 @@ import './App.css';
 import Navbar from './containers/navbar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { Switch } from '@material-ui/core';
-
+import { createMuiTheme } from '@material-ui/core/styles';
 import Establishments from './containers/Establishments/Establishments';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Poppins',
+      'sans-serif'
+    ].join(','),
+  },});
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+<div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -24,18 +34,20 @@ function App() {
         </a>
       </header> */}
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
-          <Route exact path="/establishments" component={<Establishments />} />
+          <Route path="/establishments" element={<Establishments />} />
           {/* <Route path="/login" component={Login} />
           <Route path="/canteens" component={Canteens} />
           <Route path="/faq" component={Faq} /> */}
         </Routes>
       </Router>
-      <h1>
-        Hello React
-      </h1>
+      {/* <h1>
+        Hello React test
+      </h1> */}
     </div>
+    </ThemeProvider>
+    
   );
 }
 
