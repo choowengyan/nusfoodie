@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, ListItem, Box } from '@mui/material';
+import { Grid, ListItem, Box, CardActionArea } from '@mui/material';
 
 
 
@@ -12,6 +12,7 @@ export default function StallListings() {
 
                 <Grid item xs={4} md={3}>
                     <ListItem>
+                    <CardActionArea href='/establishments/1/1'>
                         <Box
                             sx={{
                                 backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRROVP_w3yahovyTjpZIq5MTymLfHsYsRFlNg&usqp=CAU')",
@@ -34,6 +35,7 @@ export default function StallListings() {
                         >
                             Taiwan Ichiban
                         </Box>
+                        </CardActionArea>
                     </ListItem>
                 </Grid>
                 <Grid item xs={6} md={3}>
