@@ -1,9 +1,7 @@
 
-import SignInPic from '../../assets/signInPic.png';
+import SignUpPic from '../../assets/signup.png';
 import logo from '../../assets/logoV.png'
-// import './login.css';
 import React, { Component } from "react";
-// import { Container, Button, Row, Col, Form, FormControl } from "react-bootstrap";
 import axios from 'axios';
 import { Grid, Item, ListItem, Chip, Link, Checkbox, TextField, FormControlLabel, Typography, Box, Button } from '@mui/material';
 
@@ -16,7 +14,7 @@ const handleSubmit = (event) => {
     });
 };
 
-class Login extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
         // this.state = {
@@ -216,10 +214,10 @@ class Login extends Component {
         return (
             // <Container id="loginForm">
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item md={6}>
-                    <img src={SignInPic} style={{ width: '85%', paddingTop: '7em', alignContent: 'center' }} className="signIn-Logo" id="signinLogo" alt="logo" />
+                <Grid item md={6} xs={12}>
+                    <img src={SignUpPic} style={{ width: '75%', paddingTop: '7.5em', alignContent: 'right' }} className="signIn-Logo" id="signinLogo" alt="logo" />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={6} xs={12}>
                     <Box
                         sx={{
                             marginTop: 8,
@@ -234,7 +232,7 @@ class Login extends Component {
                             Welcome to NUSFoodie!
                         </Typography>
                         <Typography component="h5">
-                            Log In to your account now!
+                            Sign Up New Account Now!
                         </Typography>
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                             <TextField
@@ -258,13 +256,13 @@ class Login extends Component {
                                 autoComplete="current-password"
                             />
 
-                            <Button type="submit" variant="contained" sx={{ width: '100%', marginTop: '1em', marginBottom: '2em', backgroundColor: '#F5B102', color: 'white' }}>Log In</Button>
+                            <Button type="submit" variant="contained" sx={{ width: '100%', marginTop: '1em', marginBottom: '2em', backgroundColor: '#F5B102', color: 'white' }}>Sign Up</Button>
                             <Grid container>
                                 <Grid item>
                                     {/* <Link href="#" variant="body2">
                                         {"Don't have an account? Sign Up Now!"}
                                     </Link> */}
-                                    Don't have an account? <Link href="/signup" underline="none" color="#000A60" style={{ fontWeight: 'bold' }}>{'Sign Up Now!'}</Link>
+                                    Already have an account? <Link href="/login" underline="none" color="#000A60" style={{ fontWeight: 'bold' }}>{'Log In Now!'}</Link>
                                 </Grid>
                             </Grid>
                         </Box>
@@ -272,51 +270,8 @@ class Login extends Component {
                 </Grid>
             </Grid>
         );
-        {/* <Row style={{ paddingTop: "8em" }}>
-                    <Col md={7} xs={6}>
-                        <img src={SignInPic} style={{ width: '30%' }} className="signIn-Logo" id="signinLogo" alt="logo" />
-
-                    </Col>
-                    <Col md={5} xs={6}>
-                        <h1>Welcome to NUSFoodie!</h1>
-                        <h5>Log In to your account now!</h5>
-
-                        <Form>
-                            <Form.Group className="SignIn" controlId="emailId">
-                                <Form.Label>Email Address</Form.Label>
-                                <Form.Control type="email" name="email" placeholder="Enter email address" />
-
-                            </Form.Group>
-
-                            <Form.Group className="SignIn" controlId="passwordId">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" name="password" placeholder="Enter password" />
-                                <FormControl.Feedback type="invalid">Invalid Password</FormControl.Feedback>
-                            </Form.Group> */}
-
-
-        {/* {this.state.error && (
-                                <div className="form-group">
-                                    <div className="alert alert-danger" role="alert">
-                                        {this.state.error}
-                                    </div>
-                                </div>
-                            )} */}
-
-
-        {/* <div className="d-grid gap-2" style={{ marginTop: '1em' }}>
-
-                                <Button type="submit" style={{ backgroundColor: "#1A2E5A", marginTop: "1em" }}>Sign In</Button>
-
-                            </div>
-
-                        </Form>
-                    </Col>
-                </Row> */}
-
-
     };
 };
 
 
-export default Login;
+export default SignUp;

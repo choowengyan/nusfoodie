@@ -11,6 +11,7 @@ import Home from './containers/Home/Home';
 import Stalls from './containers/Stalls/Stalls';
 import StallItems from './containers/Stall_Items/Stall_items';
 import Login from './containers/Authentication/login';
+import SignUp from './containers/Authentication/signup';
 
 const theme = createTheme({
   typography: {
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/establishments" element={<Establishments />} />
             <Route path="/establishments/:id" element={<Stalls />} />
             <Route path="/establishments/:id/:stallId" element={<StallItems />} />
