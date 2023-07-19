@@ -8,6 +8,7 @@ import Establishments from './containers/Establishments/Establishments';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Cuisines from './containers/Cuisines/Cuisines';
 import Home from './containers/Home/Home';
+import Stalls from './containers/Stalls/Stalls';
 
 const theme = createTheme({
   typography: {
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/establishments" element={<Establishments />} />
+            <Route path="/establishments/:id" element={<Stalls />} />
             <Route path="/cuisines" element={<Cuisines />} />
             {/* <Route path="/login" component={Login} />
           <Route path="/canteens" component={Canteens} />

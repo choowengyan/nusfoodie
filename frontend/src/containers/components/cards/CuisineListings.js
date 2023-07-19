@@ -1,23 +1,11 @@
 import React from 'react';
-import {
-    MDBCard,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardText,
-    MDBCardImage,
-    MDBRow, MDBCol,
-    MDBCardSubTitle
-} from 'mdb-react-ui-kit';
-import { Grid, Item, ListItem, Chip } from '@mui/material';
+import { Grid, Item, ListItem, Chip, Link } from '@mui/material';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material';
 
-// import './cards.css';
+
 var cardStyle = {
     display: 'block',
     width: '30vw',
@@ -34,6 +22,7 @@ export default function CuisineListings() {
 
                 <Grid item xs={6} md={3}>
                     <ListItem>
+               
                         <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
                             <CardMedia
                                 sx={{ height: 140 }}
@@ -54,6 +43,7 @@ export default function CuisineListings() {
                                 <Chip sx={{ textTransform: 'uppercase' }} rowSpacing={12} color="primary" label="Japanese" />
                             </CardContent>
                         </Card>
+        
                     </ListItem>
                 </Grid>
                 <Grid item xs={6} md={3}>

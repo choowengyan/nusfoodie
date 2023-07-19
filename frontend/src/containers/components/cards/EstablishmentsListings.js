@@ -1,21 +1,10 @@
 import React from 'react';
-import {
-    MDBCard,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardText,
-    MDBCardImage,
-    MDBRow, MDBCol,
-    MDBCardSubTitle
-} from 'mdb-react-ui-kit';
-import { Grid, Item, ListItem } from '@mui/material';
+import { Grid, Item, ListItem, Link, CardActionArea } from '@mui/material';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material';
+
 
 // import './cards.css';
 var cardStyle = {
@@ -34,7 +23,9 @@ export default function EstablishmentsListings() {
 
                 <Grid item xs={6} md={4}>
                     <ListItem>
+                 
                         <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
+                        <CardActionArea href='/establishments/1'>
                             <CardMedia
                                 sx={{ height: 140 }}
                                 image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/Frontier-Canteen-1024x684.jpg"
@@ -54,8 +45,9 @@ export default function EstablishmentsListings() {
                                     </Typography>
                                 </Typography>
                             </CardContent>
-
+                            </CardActionArea>
                         </Card>
+                     
                     </ListItem>
                 </Grid>
                 <Grid item xs={6} md={4}>
