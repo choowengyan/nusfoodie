@@ -215,7 +215,7 @@ class SignUp extends Component {
             // <Container id="loginForm">
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item md={6} xs={12}>
-                    <img src={SignUpPic} style={{ width: '75%', paddingTop: '7.5em', alignContent: 'right' }} className="signIn-Logo" id="signinLogo" alt="logo" />
+                    <img src={SignUpPic} style={{ width: '75%', paddingTop: '8em', alignContent: 'right' }} className="signIn-Logo" id="signinLogo" alt="logo" />
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <Box
@@ -224,7 +224,11 @@ class SignUp extends Component {
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
-                            paddingTop: '5em'
+                            paddingTop: '5em',
+                            // marginRight:'3em',
+                            // paddingRight:'3em',
+                            // paddingLeft:'5em',
+                            width:'70%'
                         }}
                     >
                         <img src={logo} style={{ width: '30%', paddingBottom: '2em' }} className="signIn-Logo" id="signinLogo" alt="logo" />
@@ -232,7 +236,7 @@ class SignUp extends Component {
                             Welcome to NUSFoodie!
                         </Typography>
                         <Typography component="h5">
-                            Sign Up New Account Now!
+                            Sign Up to be part of us!
                         </Typography>
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                             <TextField
@@ -244,6 +248,15 @@ class SignUp extends Component {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name="username"
+                                autoComplete="username"
                             />
                             <TextField
                                 margin="normal"
