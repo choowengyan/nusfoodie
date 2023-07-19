@@ -10,6 +10,7 @@ import Cuisines from './containers/Cuisines/Cuisines';
 import Home from './containers/Home/Home';
 import Stalls from './containers/Stalls/Stalls';
 import StallItems from './containers/Stall_Items/Stall_items';
+import Login from './containers/Authentication/login';
 
 const theme = createTheme({
   typography: {
@@ -42,6 +43,7 @@ function App() {
           {/* <Navbar /> */}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/establishments" element={<Establishments />} />
             <Route path="/establishments/:id" element={<Stalls />} />
             <Route path="/establishments/:id/:stallId" element={<StallItems />} />
