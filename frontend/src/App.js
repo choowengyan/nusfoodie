@@ -12,6 +12,8 @@ import Stalls from './containers/Stalls/Stalls';
 import StallItems from './containers/Stall_Items/Stall_items';
 import Login from './containers/Authentication/login';
 import SignUp from './containers/Authentication/signup';
+import Reviews from './containers/Reviews/Reviews';
+import ReviewForm from './containers/Reviews/Forms';
 
 const theme = createTheme({
   typography: {
@@ -50,9 +52,8 @@ function App() {
             <Route path="/establishments/:id" element={<Stalls />} />
             <Route path="/establishments/:id/:stallId" element={<StallItems />} />
             <Route path="/cuisines" element={<Cuisines />} />
-            {/* <Route path="/login" component={Login} />
-          <Route path="/canteens" component={Canteens} />
-          <Route path="/faq" component={Faq} /> */}
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/review-form" element={<ReviewForm />} />
           </Routes>
         </Router>
         {/* <h1>

@@ -306,8 +306,8 @@ const ResponsiveAppBar = (props) => {
                             <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/cuisines">
                                 <Typography textAlign="center">Cuineses</Typography>
                             </MenuItem>
-                            <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/food-review">
-                                <Typography textAlign="center">Food Review</Typography>
+                            <MenuItem onClick={handleCloseNavMenu} className={classes.button} component={Link} to="/reviews">
+                                <Typography textAlign="center">Food reviews</Typography>
                             </MenuItem>
 
                             <List
@@ -339,8 +339,8 @@ const ResponsiveAppBar = (props) => {
                         <Button onClick={handleCloseNavMenu} component={Link} to="/cuisines" sx={{ my: 1, color: 'black', display: 'block', fontSize: "10px" }}>
                             Cuisine
                         </Button>
-                        <Button onClick={handleCloseNavMenu} component={Link} to="/food-review" sx={{ my: 1, color: 'black', display: 'block', fontSize: "10px" }}>
-                            Food Review
+                        <Button onClick={handleCloseNavMenu} component={Link} to="/reviews" sx={{ my: 1, color: 'black', display: 'block', fontSize: "10px" }}>
+                            Food Reviews
                         </Button>
                     </Box>
 
