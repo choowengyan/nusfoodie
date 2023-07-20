@@ -3,7 +3,7 @@ import SignUpPic from '../../assets/signup.png';
 import logo from '../../assets/logoV.png'
 import React, { Component } from "react";
 import axios from 'axios';
-import { Grid, Item, ListItem, Chip, Link, Checkbox, TextField, FormControlLabel, Typography, Box, Button } from '@mui/material';
+import { Grid, Link, TextField, Typography, Box, Button } from '@mui/material';
 
 const handleSubmit = (event) => {
     event.preventDefault();

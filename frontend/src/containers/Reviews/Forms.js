@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Button, Link, Typography, Grid, TextField, Card, Box, MenuItem } from '@mui/material';
+import { Button, Typography, Grid, TextField, Box, MenuItem } from '@mui/material';
 import axios from "axios";
 
 import './Reviews.css';
@@ -209,9 +209,6 @@ class ReviewForm extends Component {
                                 flexDirection: "column",
                                 alignItems: "center",
                                 paddingTop: '2em',
-                                // marginRight:'3em',
-                                // paddingRight:'3em',
-                                // paddingLeft:'5em',
                                 width: '70%'
                             }}
                         >
