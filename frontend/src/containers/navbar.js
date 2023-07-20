@@ -179,7 +179,6 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 
 import NUSFoodieVlogo from "../assets/logoV.png"
-import headerBackground from "../assets/nav.jpeg";
 import { width } from '@mui/system';
 
 // import Login from '../containers/Authentication/login';
