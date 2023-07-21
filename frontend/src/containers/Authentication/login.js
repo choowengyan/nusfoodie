@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { Grid, Link, TextField, Typography, Box, Button } from '@mui/material';
+import { withCookies } from 'react-cookie';
 
 import SignInPic from '../../assets/signInPic.png';
 import logo from '../../assets/logoV.png'
@@ -14,6 +15,7 @@ class Login extends Component {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
+        // prepare data to send to backend
         const postData = {
             email: data.get('email'),
             password: data.get('password'),
@@ -90,4 +92,4 @@ class Login extends Component {
 };
 
 
-export default Login;
+export default withCookies(Login);
