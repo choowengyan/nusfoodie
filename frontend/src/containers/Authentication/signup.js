@@ -23,7 +23,7 @@ class SignUp extends Component {
 
         // POST data
         try {
-            const response = await axios.post('http://localhost:5000/api/signup', postData);
+            const response = await axios.post('http://localhost:5001/api/signup', postData);
             console.log(response.data);
             alert("Success! Account created successfully! You may login now.")
         } catch (error) {

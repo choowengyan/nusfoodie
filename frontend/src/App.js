@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Establishments from './containers/Establishments/Establishments';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { useCookies } from 'react-cookie';
+import { useState } from 'react';
 
 import './App.css';
 import Cuisines from './containers/Cuisines/Cuisines';
@@ -11,6 +13,8 @@ import Login from './containers/Authentication/login';
 import SignUp from './containers/Authentication/signup';
 import Reviews from './containers/Reviews/Reviews';
 import ReviewForm from './containers/Reviews/Forms';
+import UserContext from "./UserContext"
+
 
 const theme = createTheme({
   typography: {
