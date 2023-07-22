@@ -1,4 +1,4 @@
-#establishment-header {
+#item-header {
     font-family: 'Poppins', sans-serif;
     color: #002B5B;
     width: 100%;
@@ -11,7 +11,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-#filter-establishment {
+#filter-item {
     padding-top: 10px;
     padding-left: 30px;
     padding-right: 20px;
@@ -21,7 +21,7 @@
     z-index: 1;
 }
 
-.establishment-header .h1 {
+.item-header .h1 {
     text-align: center;
     font-size: 18px;
     padding-bottom: 0.5em;

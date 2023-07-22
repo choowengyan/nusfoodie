@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from "axios";
 
-import './Establishments.css';
+import './Stall_item.css';
 import ResponsiveAppBar from '../navbar';
-import Button from '@mui/material/Button';
-
-import EstablishmentsListings from '../components/cards/EstablishmentsListings';
+import ItemListings from '../components/cards/ItemListings';
 
 const styles = {
     paperContainer: {
@@ -16,7 +14,7 @@ const styles = {
     }
 };
 
-class Establishments extends Component {
+class StallItems extends Component {
     constructor(props) {
         super(props);
     }
@@ -135,12 +133,12 @@ class Establishments extends Component {
 
     render() {
         return (
-            <Container fluid mx="3px" id="establishments" >
+            <Container fluid mx="3px" id="item" >
                 <ResponsiveAppBar />
 
-                <div className="flex-container align-content-sm-stretch" id="establishment-header" style={Object.assign({}, styles.paperContainer, { width: "100%", margin: 0, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' })}>
-                    <h1 style={{ fontSize: "28px", textAlign: 'center' }}>Canteens</h1>
-                    <div className="flex-container align-content-sm-stretch" id="establishment-subheader">
+                <div className="flex-container align-content-sm-stretch" id="item-header" style={Object.assign({}, styles.paperContainer, { width: "100%", margin: 0, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' })}>
+                    <h1 style={{ fontSize: "28px", textAlign: 'center' }}>Frontier</h1>
+                    <div className="flex-container align-content-sm-stretch" id="item-subheader">
                         <h4 style={{ fontSize: "18px", paddingTop: '23px', paddingBottom: '29px' }}>Satisfy your cravings now!</h4>
                     </div>
                 </div>
@@ -176,13 +174,14 @@ class Establishments extends Component {
 
 
 
-                <div className= "container">
-                    {/* <div className="subtitile">
-                        <p style={{ fontSize: "18px", paddingTop: "1em" }}>  <small class="text-muted">Your profile says you are </small><span style={{ fontFamily: "Poppins", fontSize: "17px", fontStyle: "bold", color: "1A2E5A", fontWeight: 400 }}>{this.state.riasec_1},  {this.state.riasec_2}, {this.state.riasec_3}</span>! </p>
-                        <p style={{ fontSize: "13px", textAlign: "center", marginBottom: 0 }}>These are some recommended undergraduate programmes you might be interested in. Click details to explore and learn more about the education with us!</p>
-                    </div> */}
+                <div className="container">
+                    <div className="subtitile">
+                        <p style={{ fontSize: "16px", paddingTop: "1em", paddingBottom: '2em', textAlign: 'left', paddingLeft: '9em' }}>Here are the list of canteens/ restaurants available around at <b>Taiwan Ichiban, Frontier</b>! </p>
+                        <h2 style={{ textAlign: 'left', paddingLeft: '6em' }}>Taiwan Ichiban</h2>
+                    </div>
 
-                    <EstablishmentsListings />
+
+                    <ItemListings />
 
                     {/* <ProgrammeListings
                         selectedUniversity={this.state.selectedUniversity}
@@ -200,4 +199,4 @@ class Establishments extends Component {
     }
 }
 
-export default Establishments;
+export default StallItems;

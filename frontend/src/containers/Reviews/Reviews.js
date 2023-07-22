@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Chip, Typography, cardStyle, CardMedia, Card, Box, CardContent } from '@mui/material';
 import axios from "axios";
 
-import './Establishments.css';
+import './Reviews.css';
 import ResponsiveAppBar from '../navbar';
-import Button from '@mui/material/Button';
+import ReviewPic from '../../assets/review.png'
 
-import EstablishmentsListings from '../components/cards/EstablishmentsListings';
+import ReviewListings from '../components/cards/ReviewListings';
 
 const styles = {
     paperContainer: {
@@ -16,7 +17,7 @@ const styles = {
     }
 };
 
-class Establishments extends Component {
+class Reviews extends Component {
     constructor(props) {
         super(props);
     }
@@ -135,69 +136,45 @@ class Establishments extends Component {
 
     render() {
         return (
-            <Container fluid mx="3px" id="establishments" >
+            <Container fluid mx="3px" id="reviews" >
                 <ResponsiveAppBar />
 
-                <div className="flex-container align-content-sm-stretch" id="establishment-header" style={Object.assign({}, styles.paperContainer, { width: "100%", margin: 0, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' })}>
-                    <h1 style={{ fontSize: "28px", textAlign: 'center' }}>Canteens</h1>
-                    <div className="flex-container align-content-sm-stretch" id="establishment-subheader">
-                        <h4 style={{ fontSize: "18px", paddingTop: '23px', paddingBottom: '29px' }}>Satisfy your cravings now!</h4>
+                <div className="flex-container align-content-sm-stretch" id="review-header" style={Object.assign({}, styles.paperContainer, { width: "100%", margin: 0, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' })}>
+                    <h1 style={{ fontSize: "28px", textAlign: 'center' }}>Food Reviews</h1>
+                    <div className="flex-container align-content-sm-stretch" id="review-subheader">
+                        <h4 style={{ fontSize: "18px", paddingTop: '23px', paddingBottom: '29px' }}>Let others know your favourite food in NUS!</h4>
                     </div>
                 </div>
 
 
-                {/* <Row>
-                            <Col className="col-12 col-md-3">
-                                <UniversityFilter
-                                    setSelectedUniversity={this.setSelectedUniversity}
-                                    selectedUniversity={this.state.selectedUniversity}
-                                /></Col>
-                            <Col className="col-12 col-md-3">
-                                <DisciplineFilter
-                                    setSelectedDiscipline={this.setSelectedDiscipline}
-                                    selectedDiscipline={this.state.selectedDiscipline}
-                                /></Col>
-                            <Col className="col-12 col-md-3">
-                                <SearchProgrammes
-                                    setSearchQuery={this.setSearchQuery}
-                                    search={this.state.search}
-                                /></Col>
-                            <Col className="col-12 col-md-3" style={{ padding: "20px", marginBottom: "1em" }}>
-                                <Button className="submit-filter position-absolute bottom-0 end-5 " variant="contained" style={{ marginLeft: "10px", marginRight: "10px", fontSize: "13px" }}
-                                    onClick={() => { this.handleSubmit() }}>
-                                    Submit
-                                </Button>
-                                <Button className="submit-filter position-absolute bottom-0 end-0" size="lg" variant="outlined" style={{ marginLeft: "10px", marginRight: "40px", fontSize: "13px" }}
-                                    onClick={this.resetForm}>
-                                    Reset
-                                </Button>
-                            </Col>
-                        </Row> */}
+                <div className="container">
+                    <Card sx={{ display: 'flex', width: '60%', margin: '0 auto', boxShadow: 4, borderRadius: '16px', backgroundColor: '#F9F9F9' }}>
+                        <CardMedia
+                            component="img"
+                            sx={{ width: 151 }}
+                            image={ReviewPic}
+                            alt="Live from space album cover"
+                        />
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flex: '1 0 auto' }}>
+                                <Typography component="div" variant="h6" fontWeight={'bold'} fontSize='18px' color={'#0F006B'}>
+                                    Share your food ratings and reviews with us!
+                                </Typography>
+                                <Button variant="contained" href='/review-form' style={{ bottom: 0, left: "90%", marginTop: '1em', backgroundColor: '#390A9D' }}>Post My Review</Button>
+                            </CardContent>
 
+                        </Box>
+                    </Card>
 
+                    <div className="subtitile">
+                        <p style={{ fontSize: "16px", paddingTop: "1em", textAlign: 'left', paddingLeft: '9em' }}>Explore various food reviews by other foodies! Share yours too!</p>
+                    </div>
 
-                <div className= "container">
-                    {/* <div className="subtitile">
-                        <p style={{ fontSize: "18px", paddingTop: "1em" }}>  <small class="text-muted">Your profile says you are </small><span style={{ fontFamily: "Poppins", fontSize: "17px", fontStyle: "bold", color: "1A2E5A", fontWeight: 400 }}>{this.state.riasec_1},  {this.state.riasec_2}, {this.state.riasec_3}</span>! </p>
-                        <p style={{ fontSize: "13px", textAlign: "center", marginBottom: 0 }}>These are some recommended undergraduate programmes you might be interested in. Click details to explore and learn more about the education with us!</p>
-                    </div> */}
-
-                    <EstablishmentsListings />
-
-                    {/* <ProgrammeListings
-                        selectedUniversity={this.state.selectedUniversity}
-                        selectedDiscipline={this.state.selectedDiscipline}
-                        search={this.state.search}
-                        courses_={this.state.courses_}
-                        setCourses_={this.setCourses_}
-                        page={this.state.page}
-                        setPage={this.setPage}
-                        pageCount={this.state.pageCount}
-                    /> */}
+                    <ReviewListings />
                 </div>
-            </Container>
+            </Container >
         )
     }
 }
 
-export default Establishments;
+export default Reviews;
