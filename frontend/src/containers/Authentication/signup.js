@@ -1,9 +1,10 @@
-
 import SignUpPic from '../../assets/signup.png';
 import logo from '../../assets/logoV.png'
 import React, { Component } from "react";
 import axios from 'axios';
 import { Grid, Link, TextField, Typography, Box, Button } from '@mui/material';
+
+const url = 'http://34.126.91.148:5001/api'
 
 class SignUp extends Component {
     // constructor(props) {
@@ -24,10 +25,12 @@ class SignUp extends Component {
         // POST data
         try {
             const response = await axios.post('http://localhost:5001/api/signup', postData);
+            //const response = await axios.post(`${url}/signup`, postData);
             console.log(response.data);
             alert("Success! Account created successfully! You may login now.")
+            window.location.href = "/login";
         } catch (error) {
-            alert('Error:' + error.response.data.message);
+            alert('Error: ' + error.response.data.message);
         }
     };
 

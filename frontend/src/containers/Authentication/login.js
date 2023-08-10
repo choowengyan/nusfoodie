@@ -6,6 +6,8 @@ import { withCookies } from 'react-cookie';
 import SignInPic from '../../assets/signInPic.png';
 import logo from '../../assets/logoV.png'
 
+
+const url = 'http://34.126.91.148:5001/api'
 class Login extends Component {
     // constructor(props) {
     //     super(props);
@@ -23,11 +25,16 @@ class Login extends Component {
 
         try {
             const response = await axios.post('http://localhost:5001/api/login', postData);
+            //const response = await axios.post(`${url}/login`, postData);
             console.log(response.data);
 
             this.props.cookies.set('user', postData.email, { path: '/' });
+            window.location.href = "/";
         } catch (error) {
             console.log('Error: ', error);
+            // show error messgae to user
+            alert('Error: ' + error.response.data.message)
+            console.error('Error:', error.response.data.message);
         }
     };
 
