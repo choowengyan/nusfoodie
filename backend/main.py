@@ -211,8 +211,7 @@ def get_food_items():
 @app.route("/api/reviews", methods=["GET"])
 def get_reviews():
     reviews = db.session.query(Review, User).join(User, Review.user_id==User.id).all()
-    # now reviews is a list of (review, user) tuples
-    # return it in a format your client can understand
+    # reviews is a list of (review, user) tuples 
     reviews_list = [
         {
             "review_id": review.id,
@@ -248,7 +247,7 @@ pca = PCA(n_components=n_comp)
 pca.fit(X)
 cos_sim_data = pd.DataFrame(cosine_similarity(X))
 
-# provide recommendation (up to 5)
+# provide up to 5 recommendation
 def give_recommendations(index):
     index_recomm = cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[1:6]
     food_recomm = df2['foodName'].loc[index_recomm].values
