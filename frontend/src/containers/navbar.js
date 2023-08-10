@@ -10,9 +10,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { makeStyles } from '@mui/styles';
 import List from '@mui/material/List';
@@ -31,8 +29,6 @@ const ResponsiveAppBar = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const { user } = useContext(UserContext);
-    const [profilePic, setProfilePic] = React.useState("");
-
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -62,28 +58,26 @@ const ResponsiveAppBar = (props) => {
         setAnchorElUser(null);
     };
 
-    const useStyles = makeStyles((theme) => ({
-        navlinks: {
-            display: "flex",
-        },
-        customHeight: {
-            minHeight: '10000000em'
-        },
-        logo: {
-            // minHeight: '90px',
-            minWidth: 30,
-            maxHeight: 40,
-            // width: 40
-            // maxWidth: "10vh"
-        },
-        button: {
-            display: "flex",
-            justifyContent: "flex-end"
-        }
+    // const useStyles = makeStyles((theme) => ({
+    //     navlinks: {
+    //         display: "flex",
+    //     },
+    //     customHeight: {
+    //         minHeight: '10000000em'
+    //     },
+    //     logo: {
+    //         // minHeight: '90px',
+    //         minWidth: 30,
+    //         maxHeight: 40,
+    //         // width: 40
+    //         // maxWidth: "10vh"
+    //     },
+    //     button: {
+    //         display: "flex",
+    //         justifyContent: "flex-end"
+    //     }
 
-    }));
-
-    const classes = useStyles();
+    // }));
 
     return (
         <AppBar sx={{ background: '#FFC95F', boxShadow: 'none' }}>
@@ -120,6 +114,9 @@ const ResponsiveAppBar = (props) => {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                         >
+                            <MenuItem onClick={handleCloseNavMenu} sx={{ display: "flex", justifyContent: "flex-end" }} component={Link} to="/">
+                                <Typography textAlign="center">Home</Typography>
+                            </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu} sx={{ display: "flex", justifyContent: "flex-end" }} component={Link} to="/establishments">
                                 <Typography textAlign="center">Canteens</Typography>
                             </MenuItem>
@@ -135,10 +132,7 @@ const ResponsiveAppBar = (props) => {
                                 component="nav"
                                 aria-labelledby="nested-list-subheader"
                             >
-                                <ListItemButton onClick={handleClick}>
-                                    <ListItemText primary="Resources" />
-                                    {open ? <ExpandLess /> : <ExpandMore />}
-                                </ListItemButton>
+
                                 <Collapse in={open} timeout="auto" unmountOnExit>
                                 </Collapse>
                             </List>
@@ -151,6 +145,9 @@ const ResponsiveAppBar = (props) => {
                         <Box sx={{ flexGrow: 1 }} />
 
                         {/* Desktop version (larger screen size) */}
+                        <MenuItem component={Link} to="/">
+                            <Typography textAlign="center">Home</Typography>
+                        </MenuItem>
                         <MenuItem component={Link} to="/establishments">
                             <Typography textAlign="center">Canteens</Typography>
                         </MenuItem>
@@ -179,7 +176,6 @@ const ResponsiveAppBar = (props) => {
                                 </Button>
                             </>
                         )}
-
                     </Box>
                 </Toolbar>
             </Container>
