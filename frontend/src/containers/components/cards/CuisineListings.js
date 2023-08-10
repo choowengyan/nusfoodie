@@ -1,128 +1,162 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Grid, Item, ListItem, Chip, Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Pagination from '@mui/material/Pagination';
+import { genreStyles } from './genreStyles';
 
+const url = 'http://34.126.91.148:5001/api'
 
 var cardStyle = {
     display: 'block',
     width: '30vw',
     transitionDuration: '0.3s',
     height: '100%'
-    // height: '100%'
 }
 
-// const EstablishmentsListings = (props) => {
-export default function CuisineListings() {
+// const genreStyles = {
+//     Chinese: {
+//         backgroundColor: '#934545',
+//         color: '#FFFFFF',
+//     },
+//     Malay: {
+//         backgroundColor: '#483D3F',
+//         color: '#FFFFFF',
+//     },
+//     Indian: {
+//         backgroundColor: '#0DBB50',
+//         color: '#FFFFFF',
+//     },
+//     Taiwanese: {
+//         backgroundColor: '#FAB700',
+//         color: '#FFFFFF',
+//     },
+//     Western: {
+//         backgroundColor: '#939F5C',
+//         color: '#FFFFFF',
+//     },
+//     Japanese: {
+//         backgroundColor: '#005694',
+//         color: '#FFFFFF',
+//     },
+//     Korean: {
+//         backgroundColor: '#7525D1',
+//         color: '#FFFFFF',
+//     },
+//     Italian: {
+//         backgroundColor: '#467599',
+//         color: '#FFFFFF',
+//     },
+//     Thai: {
+//         backgroundColor: '#1D3354',
+//         color: '#FFFFFF',
+//     },
+//     Drinks: {
+//         backgroundColor: '#E57373',
+//         color: '#FFFFFF',
+//     },
+//     Fruits: {
+//         backgroundColor: '#009583',
+//         color: '#FFFFFF',
+//     },
+//     HongKong: {
+//         backgroundColor: '#456793',
+//         color: '#FFFFFF',
+//     },
+//     Vegetarian: {
+//         backgroundColor: '#FA2D71',
+//         color: '#FFFFFF',
+//     },
+// }
+
+
+export default function CuisineListings({ limit, showPagination = false }) {
+    const [foodItems, setFoodItems] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemPerPage = 20; // 20 food items per page
+    const totalPage = Math.ceil(foodItems.length / itemPerPage);
+
+    useEffect(() => {
+        axios.get('http://localhost:5001/api/fooditems')
+            //axios.get(`${url}/fooditems`)
+            .then(response => {
+                setFoodItems(response.data);
+                console.log("test:", response.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching data: ${error}`);
+            });
+    }, []);
+
+    const startIndex = (currentPage - 1) * itemPerPage;
+    const endIndex = startIndex + itemPerPage;
+
+    let foodItemsToDisplay = foodItems.slice(startIndex, endIndex);
+
+    const handlePageChange = (event, newPage) => {
+        setCurrentPage(newPage);
+    };
+
+    // limit the display of number of food items 
+    if (limit !== undefined) {
+        foodItemsToDisplay = foodItemsToDisplay.slice(0, limit);
+    }
+
     return (
         <>
-            <Grid container style={{ paddingLeft: '8em', paddingRight: '8em' }} rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+            <Grid container style={{ paddingLeft: '8em', paddingRight: '8em', marginBottom: '2em' }} rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
 
-                <Grid item xs={6} md={3}>
-                    <ListItem>
-               
-                        <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="https://www.wandercooks.com/wp-content/uploads/2021/06/easy-15-minute-curry-udon-3.jpg"
-                                title="Tamoya Udon"
-                            />
-                            <CardContent>
-                                <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} gutterBottom variant="h5" component="div" fontSize="1rem" fontWeight="lg">
-                                    Tamoya Udon
-                                </Typography>
-                                <Typography variant="subtitle2" color="text.secondary">
-                                    Udon Don Bar
-                                    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }} color="text.primary">4.3 ⭐</Typography>
-                                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold', paddingTop: '1em', paddingBottom: '1em' }} color="text.secondary">
-                                        UTown
+                {/* Render and display food items for current page  */}
+                {/* {foodItems.map((item) => ( */}
+                {foodItemsToDisplay.map((item) => (
+                    <Grid item xs={6} md={3} key={item.foodId}>
+                        <ListItem>
+                            <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
+                                <CardMedia
+                                    sx={{ height: 140 }}
+                                    image={item.imageId ? item.imageId : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'}
+                                    title={item.foodName}
+                                />
+                                <CardContent>
+                                    <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} gutterBottom variant="h5" component="div" fontSize="1rem" fontWeight="lg">
+                                        {item.foodName}
                                     </Typography>
-                                </Typography>
-                                <Chip sx={{ textTransform: 'uppercase' }} rowSpacing={12} color="primary" label="Japanese" />
-                            </CardContent>
-                        </Card>
-        
-                    </ListItem>
-                </Grid>
-                <Grid item xs={6} md={3}>
-                    <ListItem>
-                        <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="https://4.bp.blogspot.com/-YxEChnNtEfQ/WSO2zlZHFDI/AAAAAAADiRE/z_VaOLpFkLwo_-IaVxtrBcXlCoaC-eWkgCLcB/s1600/1P1530375.JPG"
-                                title="Mixed Vegetable Rice"
-                            />
-                            <CardContent>
-                                <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} gutterBottom variant="h5" component="div" fontSize="1rem" fontWeight="lg">
-                                    Mixed Vegetable Rice
-                                </Typography>
-                                <Typography variant="subtitle2" color="text.secondary">
-                                    Mixed Vegetable Rice Stall
-                                    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }} color="text.primary"  >4.8 ⭐</Typography>
-                                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold', paddingTop: '1em', paddingBottom: '1em' }} color="text.secondary">
-                                        Frontier
+                                    <Typography variant="subtitle2" color="text.secondary">
+                                        {item.establishmentName}
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }} color="text.primary">{item.Ratings} ⭐</Typography>
+                                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold', paddingTop: '1em', paddingBottom: '1em' }} color="text.secondary">
+                                            {item.locationName}
+                                        </Typography>
                                     </Typography>
-                                </Typography>
-                                <Chip sx={{ textTransform: 'uppercase' }} rowSpacing={12} color="success" label="Japanese" />
-                            </CardContent>
-                        </Card>
-                    </ListItem>
-                </Grid>
-                <Grid item xs={6} md={3}>
-                    <ListItem>
-                        <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="https://www.seasonsandsuppers.ca/wp-content/uploads/2015/01/spicy-udon-1200-5.jpg"
-                                title="Stir-fry Udon"
-                            />
-                            <CardContent>
-                                <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} gutterBottom variant="h5" component="div" fontSize="1rem" fontWeight="lg">
-                                    Stir-Fry Udon
-                                </Typography>
-                                <Typography variant="subtitle2" color="text.secondary">
-                                    Chef's Wok
-                                    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }} color="text.primary" >4.4 ⭐</Typography>
-                                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold', paddingTop: '1em', paddingBottom: '1em' }} color="text.secondary">
-                                        Frontier
-                                    </Typography>
-                                </Typography>
-                                <Chip sx={{ textTransform: 'uppercase' }} rowSpacing={12} color="secondary" label="Halal" />
-                            </CardContent>
-                        </Card>
-                    </ListItem>
-                </Grid>
-                <Grid item xs={6} md={3}>
-                    <ListItem>
-                        <Card style={cardStyle} sx={{ maxWidth: 345, fontFamily: 'Poppins' }} md={{ minWidth: 345 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="https://e3.365dm.com/22/06/768x432/skynews-fish-chips_5796594.jpg?20220606075557"
-                                title="Fish and Chips"
-                            />
-                            <CardContent>
-                                <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} gutterBottom variant="h5" component="div" fontSize="1rem" fontWeight="lg">
-                                    Fish and Chips
-                                </Typography>
-                                <Typography variant="subtitle2" color="text.secondary">
-                                    Western Stall
-                                    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }} color="text.primary">3.8 ⭐</Typography>
-                                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold', paddingTop: '1em', paddingBottom: '1em' }} color="text.secondary">
-                                        PGP Aircon Canteen
-                                    </Typography>
-                                </Typography>
-                                <Chip sx={{ textTransform: 'uppercase' }} rowSpacing={12} color="info" label="Western" />
-                            </CardContent>
-                        </Card>
-                    </ListItem>
-                </Grid>
+                                    <Chip sx={{
+                                        textTransform: 'uppercase',
+                                        ...genreStyles[item.genreName]
+                                    }}
+                                        rowSpacing={12}
+                                        label={item.genreName} />
+                                </CardContent>
+                            </Card>
+                        </ListItem>
+                    </Grid>
+                ))}
             </Grid>
+
+            {/* Pagination Control  */}
+            {showPagination && (
+                <div style={{ display: "flex", justifyContent: "center", marginTop: "3rem", marginBottom: "4rem" }}>
+                    <Pagination
+                        count={totalPage}
+                        page={currentPage}
+                        onChange={handlePageChange}
+                    />
+                </div>
+            )}
         </>
 
     );
 }
 
 
-// export default EstablishmentsListings;
